@@ -27,12 +27,12 @@ int main(void)
 	//printf("Val = %.2f \n", temp);
 	int adc = getAdc(2);
 	printf("Val = %d \n", adc);
-	while() {
+	while(1) {
 		//temp = getCelsius();
 		//printf("Temperature = %.2f deg C \n", temp);
-		printf("Val0 = %d \n", getAdc(0));
-		printf("Val1 = %d \n", getAdc(1));
-		printf("Val2 = %d \n", getAdc(2));
+		printf("Val0 = %d \t", getAdc(0));
+		printf("Val1 = %d \t", getAdc(1));
+		printf("Val2 = %d \t", getAdc(2));
 		printf("Val3 = %d \n", getAdc(3));
 		/*if((digitalRead(LO_NEG) != HIGH) && (digitalRead(LO_POS) != HIGH)) {
 		//	ecg_value = getAdc(2);

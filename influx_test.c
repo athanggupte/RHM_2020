@@ -42,7 +42,7 @@ int main(void)
 				fprintf(stderr, "curl_easy_perform failed: %s\n", curl_easy_strerror(res));
 				break;
 			}
-			delay(1000);
+			delay(10);
 		}
 		curl_easy_cleanup(curl);
 	}
