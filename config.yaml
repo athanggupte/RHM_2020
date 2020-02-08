@@ -1,8 +1,10 @@
 pin 1: null		# 3.3V Vcc Pin 
 pin 2: null 		# 5V Vcc Pin
-pin 3: 1.1	  	# BME280 SDA Pin (I2C)
+pin 3: [1.1, 6.1]	  	# BME280 SDA Pin (I2C)
+#pin 3: 1.1	  	# BME280 SDA Pin (I2C)
 pin 4: null 		# 5V Vcc Pin
-pin 5: 1.2	  	# BME280 SCL Pin (I2C)
+pin 5: [1.2, 6.2]	  	# BME280 SCL Pin (I2C)
+#pin 5: 1.2	  	# BME280 SCL Pin (I2C)
 pin 6: null 		# GND Pin  
 pin 7: null 
 pin 8: null

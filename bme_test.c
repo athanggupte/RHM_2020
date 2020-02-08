@@ -1,17 +1,17 @@
 /**
-****************************************************************************
-* @file         example1.c
-* @author       Yogesh Hegde
-* @brief        This file provides the source code for interfacing the 
-                alcohol sensor.
+ ****************************************************************************
+ * @file         example1.c
+ * @author       Yogesh Hegde
+ * @brief        This file provides the source code for interfacing the 
+ alcohol sensor.
 
-                                    #### How to use ####
+#### How to use ####
 ============================================================================
 (#) Connect the hardware as per the diagram and run the following code.
 (#) Observe the terminal to see the changes in the switch state.
-                                                                 
-****************************************************************************
-*/
+
+ ****************************************************************************
+ */
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -35,23 +35,31 @@ int main(void)
 
 	debugLogOn();
 	initLib();
-               
-	//struct pcf8591Settings set = {.def=1};
+
+	struct pcf8591Settings set = {.def=1};
 	//int16_t ecg_value = 0;
-        float temp = getCelsius();
-	//getAdc6(set, Ain0);
-	while(1) {
+	float temp = getCelsius();
+	printf("Val = %.2f \n", temp);
+	int adc = getAdc( 1);
+	printf("Val = %d \n", adc);
+	int i;
+	while(i<10) {
 		temp = getCelsius();
-        	printf("Temperature = %.2f deg C \n", temp);
+		printf("Temperature = %.2f deg C \n", temp);
+		printf("Val0 = %d \n", getAdc(0));
+		printf("Val1 = %d \n", getAdc(1));
+		printf("Val2 = %d \n", getAdc(2));
+		printf("Val3 = %d \n", getAdc(3));
 		/*if((digitalRead(LO_NEG) != HIGH) && (digitalRead(LO_POS) != HIGH)) {
-			ecg_value = getAdc6(set, Ain0);
-			printf("Sensor Reading: %d", ecg_value);
-		}*/
+		  ecg_value = getAdc6(set, Ain0);
+		  printf("Sensor Reading: %d", ecg_value);
+		  }*/
 		/*printf("Ain0: %d", getAdc6(set, 0));
-		printf("Ain1: %d", getAdc6(set, 1));
-		printf("Ain2: %d", getAdc6(set, 2));
-		printf("Ain3: %d", getAdc6(set, 3));*/
-		delay(1000);
+		  printf("Ain1: %d", getAdc6(set, 1));
+		  printf("Ain2: %d", getAdc6(set, 2));
+		  printf("Ain3: %d", getAdc6(set, 3));*/
+		delay(500);
+		i++;
 	}
-        return 0;
+	return 0;
 }
