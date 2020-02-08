@@ -23,18 +23,18 @@ int main(void)
         float temp = getCelsius();
 	time_t seconds;
 
-	char* msg = (char*)malloc(38*sizeof(char) + 40*sizeof(char));
+	char* msg = (char*)malloc(38*sizeof(char) + 100*sizeof(char));
 
 	if(curl) {
 		curl_easy_setopt(curl, CURLOPT_URL, "http://192.168.31.119:8086/write?db=test_db");
 		while(1) {
 			temp = getCelsius();
-			seconds = time(NULL);
-			printf("\nTIME: %lld\n", seconds);
-			sprintf(msg, "patient,name=pat1,hospital=hosp1 temp=%.2f %ld", temp, seconds);
+			//seconds = time(NULL);
+			//printf("\nTIME: %lld\n", seconds);
+			sprintf(msg, "patient,name=pat1,hospital=hosp1 temp=%.2f", temp);
         		//printf("Temperature = %.2f deg C \n", temp);
 			printf("%s\n", msg);
-			delay(1000);
+			delay(5000);
 			curl_easy_setopt(curl, CURLOPT_POSTFIELDS, msg);
 			res = curl_easy_perform(curl);
 			if(res != CURLE_OK) {
