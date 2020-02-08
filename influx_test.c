@@ -20,7 +20,8 @@ int main(void)
 
 	curl = curl_easy_init();
 
-        float temp = getCelsius();
+	float temp = getCelsius();
+	int ecg = getAdc(2);	
 	time_t seconds;
 
 	char* msg = (char*)malloc(38*sizeof(char) + 100*sizeof(char));
@@ -29,9 +30,10 @@ int main(void)
 		curl_easy_setopt(curl, CURLOPT_URL, "http://192.168.0.109:8086/write?db=test_db");
 		while(1) {
 			temp = getCelsius();
+			ecg = getAdc(2);
 			//seconds = time(NULL);
 			//printf("\nTIME: %lld\n", seconds);
-			sprintf(msg, "patient,name=pat1,hospital=hosp1 temp=%.2f", temp);
+			sprintf(msg, "patient,name=pat1,hospital=hosp1 temp=%.2f,ecg=%d", temp, ecg);
         		//printf("Temperature = %.2f deg C \n", temp);
 			printf("| %s |\n", msg);
 			curl_easy_setopt(curl, CURLOPT_POSTFIELDS, msg);
